@@ -21,6 +21,7 @@ public class Anagram {
 			
 			String ns = new String(arr);
 			
+			
 			if(map.containsKey(ns)) map.get(ns).add(str);
 			else {
 				ArrayList<String> al = new ArrayList<String>();
