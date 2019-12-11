@@ -1,6 +1,4 @@
-package itexico.training.colasdinamicas;
-
-import itexico.training.colas.NodoCola;
+package itexico.training.pilasdinamicas;
 
 public class Pila {
 	private NodoPila cima;

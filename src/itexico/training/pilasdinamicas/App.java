@@ -1,4 +1,4 @@
-package itexico.training.colasdinamicas;
+package itexico.training.pilasdinamicas;
 
 import javax.swing.JOptionPane;
 
