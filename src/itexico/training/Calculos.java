@@ -112,40 +112,6 @@ public class Calculos {
 		throw new IllegalArgumentException("No solution");
 	}
 	
-	public static void main(String[] arg) {
-		int[] ar = {3,5,2,1,77,4,89,32,5,9,54,202,100,997,3,1,3,2,8,115,225,547};
-		sonPrimos(ar);
-		
-		System.out.println(factorial(8));
-		System.out.println(fibonaci(8));
-		
-		int[] ar2 = copyArray(ar);
-		
-		allSumDigits(ar2);
-		
-		int[] ar3 = twoSum(ar2,14);
-		for (int a : ar3) {
-			System.out.println(a);
-			
-		}
-		
-		System.out.println(reverseInt(543));
-		System.out.println(sqrt(8));
-		System.out.println(pow(2.0,-2));
-		System.out.println(superPow(2,ar2));
-		System.out.println(nthUglyNumber(10));
-		
-		System.out.println(divide(-2147483648,-1));
-		System.out.println(minCostToMoveChips(new int[] {2,2,2,3,3}));
-		
-		System.out.println(zeroSumSubArray(new int[] {4,-6,3,-1,4,2,7}) ? "Subarray" : "No Subarray");
-		printAllSubArrays(new int[] {4,-6,3,-1,4,2,7});
-		
-		System.out.println(findMissingNumber(new int[] {3,4,-1,1}));
-		
-		System.out.println(missingNumber(new int[] {3,0,1}));
-	}
-	
 	public static int sqrt(int x) {
 		long start = 0, mid = 0, end = x;
 		
@@ -390,5 +356,132 @@ public class Calculos {
 		}
 		
 		return n*(n+1)/2-total;
+	}
+	
+	public static int activityNotifications(int[] expenditure, int d) {
+		final int MAX_EXP = 201;
+		
+		int[] count = new int[MAX_EXP];
+		int result = 0;
+		int median =0;
+		
+		for(int i=0;i<d;i++)
+			count[expenditure[i]]++;
+		
+		for(int i=d;i<expenditure.length;i++) {
+			median = getMedian(count,d);
+			if(median <= expenditure[i]) {
+				result++;
+			}
+			count[expenditure[i-d]]--;
+			count[expenditure[i]]++;
+		}
+		return result;
+	}
+
+	private static int getMedian(int[] count, int d) {
+		// TODO Auto-generated method stub
+		int sum = 0;
+		for(int i=0;i<count.length;i++) {
+			sum += count[i];
+			if((2*sum) == d) return 2*i+1;
+			else if((2*sum) > d) return i*2;
+		}
+		return 1;
+	}
+	
+	/*
+	 * 
+	 * Implement find median with quicksort algotrithm*/
+	public static int findMedian(int[] arr) {
+		//Arrays.sort(arr);
+		quickSort(arr,0,arr.length-1);
+		return arr[arr.length/2];
+	}
+	
+	private static void quickSort(int[] arr, int izq, int der) {
+		// takes a O(n log(n)) time for execution
+		int pivot = arr[izq];
+		int elemIzq = izq+1;
+		int elemDer = der;
+		int temp=0;
+		
+		if(izq>=der) return;
+		
+		while(elemIzq <= elemDer) {
+			while(elemIzq <= der && arr[elemIzq]< pivot) {
+				elemIzq++;
+			} 
+			
+			while(elemDer > izq && arr[elemDer] >= pivot) {
+				elemDer--;
+			}
+			
+			if(elemIzq < elemDer) {
+				temp = arr[elemIzq];
+				arr[elemIzq] = arr[elemDer];
+				arr[elemDer] = temp;
+			}
+		}
+		if(elemDer > izq) {
+			temp = arr[izq];
+			arr[izq] = arr[elemDer];
+			arr[elemDer]=temp;
+		}
+		
+		quickSort(arr,izq,elemDer-1);
+		quickSort(arr,elemDer+1,der);
+		
+	}
+	
+	public static int centuryFromYear(int year) {
+		if(year % 100 == 0)
+			return year/100;
+		else
+			return (year/100)+1;
+	}
+	
+	/*
+	 * end implementation
+	 * */
+	
+	public static void main(String[] arg) {
+		int[] ar = {3,5,2,1,77,4,89,32,5,9,54,202,100,997,3,1,3,2,8,115,225,547};
+		sonPrimos(ar);
+		
+		System.out.println(factorial(8));
+		System.out.println(fibonaci(8));
+		
+		int[] ar2 = copyArray(ar);
+		
+		allSumDigits(ar2);
+		
+		int[] ar3 = twoSum(ar2,14);
+		for (int a : ar3) {
+			System.out.println(a);
+			
+		}
+		
+		System.out.println(reverseInt(543));
+		System.out.println(sqrt(8));
+		System.out.println(pow(2.0,-2));
+		System.out.println(superPow(2,ar2));
+		System.out.println(nthUglyNumber(10));
+		
+		System.out.println(divide(-2147483648,-1));
+		System.out.println(minCostToMoveChips(new int[] {2,2,2,3,3}));
+		
+		System.out.println(zeroSumSubArray(new int[] {4,-6,3,-1,4,2,7}) ? "Subarray" : "No Subarray");
+		printAllSubArrays(new int[] {4,-6,3,-1,4,2,7});
+		
+		System.out.println(findMissingNumber(new int[] {3,4,-1,1}));
+		
+		System.out.println(missingNumber(new int[] {3,0,1}));
+		
+		System.out.println(activityNotifications(new int[] {2,3,4,2,3,6,8,4,5},5));
+		
+		System.out.println(findMedian(new int[] {4,2,3,5,1,9,10,8,7,6,0}));
+		
+		System.out.println(centuryFromYear(1905));
 	}
 }

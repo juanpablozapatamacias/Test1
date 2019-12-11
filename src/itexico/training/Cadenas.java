@@ -1,6 +1,7 @@
 package itexico.training;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -179,6 +180,25 @@ public class Cadenas {
 		
 	}
 	
+	public static String convert(String str, int numRows) {
+		StringBuilder ret = new StringBuilder();
+		int n = str.length();
+		int cycleLen = 2 * numRows - 2;
+		
+		if (numRows == 1) return str;
+		
+		for(int i=0; i<numRows; i++) {
+			for(int j=0; j+i<n; j+=cycleLen) {
+				ret.append(str.charAt(j+i));
+				
+				if(i!=0 && i!=numRows-1 && j + cycleLen - i <n)ret.append(str.charAt(j+cycleLen-i));
+			}
+		}
+		
+		return ret.toString();
+
+	}
+	
 	public static void main(String[] args) {
 		String s = "halls";
 		reverse(s);
@@ -196,6 +216,8 @@ public class Cadenas {
 		
 		System.out.println(findSubstring("barfoothefoobarman", new String[] {"foo","bar"}));
 		System.out.println(findSubstring("wordgoodgoodgoodbestword", new String[] {"word","good","best","word"}));
+		
+		System.out.println(convert("PAYPALISHIRING",3));
 	}
 
 }
