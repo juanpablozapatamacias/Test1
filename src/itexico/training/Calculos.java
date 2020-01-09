@@ -445,6 +445,38 @@ public class Calculos {
 	 * end implementation
 	 * */
 	
+	public static boolean isPowerOfTwo(int n) {
+		int t,c;
+		if(n<=0) return false;
+		
+		while(n>2) {
+			t= n>>1;
+			c= t<<1;
+			
+			if(n-c!=0) return false;
+			
+			n=n>>1;
+		}
+		return true;
+	}
+	
+	public static boolean isPowerOfThree(int n) {
+		if (n==0) return false;
+		if (n==1) return true;
+		
+		if(n>1) return n%3 == 0 && isPowerOfThree(n/3);
+		else return false;
+	}
+	
+	public static boolean isPowerOfFour(int n) {
+		while (n>0) {
+			if(n ==1) return true;
+			if(n % 4 != 0) return false;
+			else n = n/4;
+		}
+		return false;
+	}
+	
 	public static void main(String[] arg) {
 		int[] ar = {3,5,2,1,77,4,89,32,5,9,54,202,100,997,3,1,3,2,8,115,225,547};
 		sonPrimos(ar);
@@ -483,5 +515,9 @@ public class Calculos {
 		System.out.println(findMedian(new int[] {4,2,3,5,1,9,10,8,7,6,0}));
 		
 		System.out.println(centuryFromYear(1905));
+		
+		System.out.println(isPowerOfTwo(16));
+		System.out.println(isPowerOfThree(9));
+		System.out.println(isPowerOfFour(256));
 	}
 }

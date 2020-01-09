@@ -11,6 +11,60 @@ public class AlgorithmsBigO {
 		System.out.println("Input is " + n);
 	}
 	
+	public static void twoLoops(int n) {
+		// Complexity = O(N) because the second loop is iterated with a constant value
+		
+		for(int i=0;i<n;i++) System.out.println(i);
+		for(int i=0;i<100;i++ )System.out.println(i);
+	}
+	
+	public static void twoLoops(int n, int m){
+		// Complexity = O(N+M) iterations are added by using different inputs (n and m)
+		
+		for(int i=0;i<n;i++) System.out.println(i);
+		for (int i=0;i<m;i++ )System.out.println(i);
+	}	
+	
+	public static void twoLoops1(int n, int m) {
+		// Complexity = O(N*M)
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<m;j++) {
+				System.out.println(i*j);
+			}
+		}
+	}
+	
+	public static void twoLoopsNestedAndNonNested(int n) {
+		// Complexity = 0(N^2 + N) = O(N^2)
+		
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				System.out.println(i*j);
+			}
+		}
+		
+		for (int k=0;k<n;k++) System.out.println(k);
+	}
+	
+	public static void twoForLoopsNotCompletelyStraightFwd(int n) {
+		// Complexity = 2^k = N = O(log N)
+		for(int i=0;i<n;i++) {
+			for(int j=n;j<n/2;j--) {
+				System.out.println(i + " " + j);
+			}
+		}
+		
+	}
+	
+	public static void doublingLoopVariable(int n) {
+		// Complexity = O(2^N)
+		for(int j=1;j<n;) {
+			System.out.println(j);
+			j=j*2;
+		}
+		
+	}
+	
 	public static void logarithmicTime() {
 		// Logarithmic time O (log n)
 		System.out.println("Logarithmic time O (log n)");
