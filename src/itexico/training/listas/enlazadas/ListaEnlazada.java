@@ -61,7 +61,7 @@ public class ListaEnlazada<T extends Comparable<T>> implements Cloneable{
 	 * @param nodo
 	 * 
 	 * */
-	private void printList(Nodo<T> nodo) {
+	public void printList(Nodo<T> nodo) {
 		System.out.println("Nodo es "+nodo.getDato());
 		if(nodo.getNext()!=null) printList(nodo.getNext());
 	} 
@@ -158,5 +158,30 @@ public class ListaEnlazada<T extends Comparable<T>> implements Cloneable{
 		
 		return pt1;
 	}
+	
+	/**
+	 * 
+	 * Reverses the linked list
+	 * 
+	 * @param head
+	 * @return Nodo<Integer>
+	 * 
+	 * **/
+	public Nodo<T> reverse(Nodo<T> nodo){
+		Nodo<T> prev = null;
+		Nodo<T> curr = nodo;
+		Nodo<T> next = null;
+		
+		while(curr !=null) {
+			next = curr.getNext();
+			curr.setNext(prev);
+			prev = curr;
+			curr = next;
+		}
+		
+		nodo = prev;
+		return nodo;
+	}
+	
 
 }

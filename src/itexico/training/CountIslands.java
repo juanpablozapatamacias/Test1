@@ -30,7 +30,7 @@ public class CountIslands {
 		try {
 			if(grid[a][b] =='1' && !visited[a][b]) {
 				visited[a][b]=true;
-				
+				/*
 				//south
 				if(a < grid.length - 1) {
 					findIslands(grid,visited,a+1,b);
@@ -50,7 +50,12 @@ public class CountIslands {
 				if(b >= 1) {
 					findIslands(grid,visited,a,b-1);
 				}
+				*/
 				
+				if(a!=0) findIslands(grid,visited,a-1,b);
+				if(a!=grid.length-1) findIslands(grid,visited,a+1,b);
+				if(b!=0) findIslands(grid,visited,a,b-1);
+				if(b!=grid[0].length-1) findIslands(grid,visited,a,b+1);
 			}
 		}
 		catch(ArrayIndexOutOfBoundsException e) {}
@@ -59,7 +64,7 @@ public class CountIslands {
 	
 	public static void main(String[] ar) {
 		char[][] M = new char[][] {
-								 {'0','1','1','0'},
+								 {'0','0','1','0'},
 								 {'0','1','0','0'},
 								 {'1','0','1','1'}
 								 };

@@ -1,4 +1,4 @@
-package itexico.training.bigO.divideconquer;
+package training.bigO.divideconquer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

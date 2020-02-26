@@ -1,4 +1,4 @@
-package itexico.training.bigO;
+package training.bigO;
 
 import java.util.Arrays;
 

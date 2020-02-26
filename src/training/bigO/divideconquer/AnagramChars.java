@@ -1,4 +1,4 @@
-package itexico.training.bigO.divideconquer;
+package training.bigO.divideconquer;
 
 public class AnagramChars {
 
