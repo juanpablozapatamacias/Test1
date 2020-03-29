@@ -17,7 +17,16 @@ public class ValidateBinarySearchTree {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		root = new Nodo<Integer>(5);
+		root.setLeft(new Nodo<Integer>(2));
+		root.setRight(new Nodo<Integer>(7));
+		
+		root.getLeft().setLeft(new Nodo<Integer>(4));
+		root.getLeft().setRight(new Nodo<Integer>(3));
+		
+		root.getRight().setLeft(new Nodo<Integer>(2));
+		
+		System.out.println(isValidBST(root));
 	}
 
 }
